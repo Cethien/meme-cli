@@ -14,14 +14,38 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "publish",
+            "label": "publish:lx",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "publish",
                 "${workspaceFolder}/src/StickerGen/StickerGen.csproj",
                 "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
+                "/consoleloggerparameters:NoSummary",
+                "/p:AssemblyName=memer",
+                "/p:PublishSingleFile=true",
+                "--self-contained",
+                "true",
+                "--os",
+                "linux"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish:win",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/src/StickerGen/StickerGen.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary",
+                "/p:AssemblyName=memer",
+                "/p:PublishSingleFile=true",
+                "--self-contained",
+                "true",
+                "--os",
+                "win"
             ],
             "problemMatcher": "$msCompile"
         },
