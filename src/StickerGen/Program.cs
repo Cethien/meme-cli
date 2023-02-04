@@ -11,8 +11,10 @@ class Program
 
     static async Task<int> Main(string[] args)
     {
+        var fontDir = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "fonts");
+
         _fonts = new FontCollection();
-        foreach (var ttf in Directory.GetFiles(Environment.CurrentDirectory + "/Resources/fonts"))
+        foreach (var ttf in Directory.GetFiles(fontDir))
         {
             _fonts.Add(ttf);
         }
@@ -60,7 +62,7 @@ class Program
 
         generateCmd.SetHandler(async (string imagePath, string texts, string fontFamily, string output) =>
             {
-                await GenerateImageWithTextAsync(imagePath, texts.Split("\n"), fontFamily, output);
+                await GenerateImageWithTextAsync(imagePath, texts.Split(";"), fontFamily, output);
             }, imageSourceOption, textOption, fontOption, outputOption);
 
         var rootCmd = new RootCommand(

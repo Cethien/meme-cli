@@ -16,7 +16,7 @@
                 "--image",
                 "${workspaceFolder}/image.png",
                 "--text",
-                "bottom text",
+                "bottom;text",
                 "--output",
                 "${workspaceFolder}/output.png"
             ],
