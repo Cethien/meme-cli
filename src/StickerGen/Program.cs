@@ -62,7 +62,14 @@ class Program
 
         generateCmd.SetHandler(async (string imagePath, string texts, string fontFamily, string output) =>
             {
-                await GenerateImageWithTextAsync(imagePath, texts.Split(";"), fontFamily, output);
+                try
+                {
+                    await GenerateImageWithTextAsync(imagePath, texts.Split(";"), fontFamily, output);
+                }
+                catch (System.Exception ex)
+                {
+                    System.Console.WriteLine(ex.Message);
+                }
             }, imageSourceOption, textOption, fontOption, outputOption);
 
         var rootCmd = new RootCommand(
@@ -88,7 +95,10 @@ class Program
     }
     static Image GenerateImageWithText(Image image, string[] texts, FontFamily family)
     {
-        //resize image
+        //set image size if image is too small
+        ResizeImage(image, 800);
+
+        //repad image
         image.Mutate(x => x.Pad((int)(image.Width * 1.1), image.Height));
 
         //get text infos
@@ -108,6 +118,7 @@ class Program
             }
         };
 
+        // draw text
         for (int i = 0; i < texts.Count(); i++)
         {
             //convert to uppercase
@@ -147,5 +158,28 @@ class Program
         }
 
         return image;
+    }
+
+    static void ResizeImage(Image image, int minWH)
+    {
+        var ratio = 0.0f;
+
+        if (image.Width > image.Height)
+        {
+            ratio = minWH / image.Height;
+            if (image.Width < minWH)
+            {
+                var newH = image.Height * (minWH / image.Width);
+                image.Mutate(x => x.Resize(minWH, newH));
+            }
+        }
+        else
+        {
+            if (image.Height < minWH)
+            {
+                var newW = image.Width * (minWH / image.Height);
+                image.Mutate(x => x.Resize(newW, minWH));
+            }
+        }
     }
 }

@@ -14,9 +14,9 @@
             "args": [
                 "generate",
                 "--image",
-                "${workspaceFolder}/image.png",
+                "${workspaceFolder}/source.png",
                 "--text",
-                "bottom;text",
+                "die froschtante;ist angewiedert",
                 "--output",
                 "${workspaceFolder}/output.png"
             ],
