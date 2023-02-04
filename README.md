@@ -1,2 +1,3 @@
-# Text Sticker Generator
-2012 called, youre unfunny af
+# Sticker Generator
+
+2012 called, you're unfunny af
