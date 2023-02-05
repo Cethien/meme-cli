@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="fonts\*.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="assets\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 

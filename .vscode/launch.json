@@ -16,9 +16,7 @@
                 "--image",
                 "${workspaceFolder}/source.png",
                 "--text",
-                "die froschtante;ist angewiedert",
-                "--output",
-                "${workspaceFolder}/output.png"
+                "bottom text",
             ],
             "cwd": "${workspaceFolder}/src/StickerGen",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
